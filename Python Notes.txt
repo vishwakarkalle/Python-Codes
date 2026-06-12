@@ -1,0 +1,211 @@
+This notes is prepared from code and debug youtube channel Python full course 11hrs playlist
+please refer to the copied link to solve the questions & notes:-
+
+https://github.com/codeanddebugedu/Python-full-course-for-beginners-in-2026/blob/main/All%20questions%20answers/q72.py
+
+
+Loops in Python:-
+==============
+There are total 2 types of loops in the python
+   1) For loop     2) While loop
+
+1) While loop:-
+     A while loop keeps running as long as the its condition is True.Python checks the condition before every iteration - the moment 
+     the condition becomes false it stops excuting.
+
+While condition:
+          # This block runs the repeatedly untill the confition is false.
+count =1
+while count <= 5:
+     print(f"Count is {count}")
+     count += 1   (This means Count = 1 + i)/ we can write in both methods.
+
+     #In the For loop when we are going to print the numbers from descending to the ascending order 
+we should consider adding "-" in the third place in the range bracket
+otherwise the code doesn't run because here in the For Loop it always 
+checks the numbers from right(+) side to left(-) side hence in the right side,
+it should always start with small numbers first and then the big number second.
+And one more important thing is that in Foor Loop(1,1) does not excute and it doesn't give any result.Because when it run it start with 1, and then it can't iterate 1. hence due to this.
+
+
+There are two types of statements in the python:-
+1) Break statement
+2) Continue statement
+
+1)Break statement:- this is statement which immediately breaks/stops the loop condition and exists it,
+even if the condition is still True or there are items left in the sequence.
+in simple terms, when i want to stop the any loop condition statement in the middle
+then i can use this break statement in the code.
+
+2)Continue statement:- This is statement which continue to skips the
+the rest of the current iteration and jumps straight to the next one.The loop doesn't stop - it just skips that particular cycle.
+
+means here, when the write the loop conditon logic, then first it excutes
+unless and untill it sees the "continue" word once its finds the "continue" statement is written in the
+code then it stops next rest of iteration and  goes to the first iteration again. Hence this process is called as "continue statement".
+
+Nested loops:-  #Most important topic asked in interviews.
+A nested loop is a loop inside another loop.The inner loop completes all its iterations
+for every single iteration if the outer loop.
+
+#Nested Loop example
+for i in range(1,6):
+    print(f"i={i}")
+    for j in range(10,15):
+        print(f"j={j}")
+here when we run the code first it will check for the first "for loop" and once its runs then before
+printing it will check the next "for loop" once its finds the next loop is yet ti be exevuted
+then it goes on finishing the second loop first and it prints the result
+then it completes the result of printing the first one.
+
+Functions in Python:-
+===================
+It's a reusable block of code that performs the specific task.
+Instead of writing the code same again and again, you write it once inside a function and call it whenver you need it.
+
+This follows the "DRY" principle - "Don't repeat yourself" its one of the important principles in the python programming.
+This Functions makes our code easier to read,easier to debug and easier to maintain.
+If the logic needs to change, you can change it in one place not everywhere.
+
+How to define & call the fuction:-
+---------------------------------
+You define a function using the "def" keyword followed by the function name and parentheses.
+You call it by writing its name followed by parentheses.
+
+#defining a function
+def function_name():
+     # code goes here
+
+#calling a function:
+function_name()
+
+Best example without using the function:-
+print("Welcome, Vishwa!")
+print("You have new 3 messages.")
+print("welcome, Vaishu!")
+print("You have new 3 messages.")
+
+#with functions - clean and re-usable
+def greet (name):
+    print(f"Welcome, {name}!")
+    print("You have 3 new message.")
+greet("Vishwa")
+greet("Vaishu")
+
+This above one is example for writing the code without using the function.
+
+Parameters & Arguments:-
+======================
+A Parameters is a variable listed inside the function definition.
+"An argument" is the actual value you pass when calling an function. Parameters make  functions flexible - the same function can work with diff data every time.
+
+def greet(name):                 #name is the paramter
+    print(f"Hello,{name}!")
+greet("Vishwa")    #vishwa is an argument
+greet("vaishu")    #vaishu is an argument
+
+Return statement:-
+================
+Here the "Return" statement sends a value back to whoever called the function. Without "return" a functionjust does something
+but gives nothing back. With return, you can use the result in therest of your program.
+
+"Note":- Once Python hits a return statement, the function stops immediately.
+Any code after return inside the function will never run.
+in simple words, anything which is written after the "return function" , it wont excute at all & it will simply ignore everything and prints the output.
+
+Default arguments:-
+=================
+A Default argument is a value that a paramter takes automatically if no argument is pased for it when calling the function.
+It makes a certain Parameters optional.
+
+def greet(name, message="Good Morning"):
+    print(f"{message},{name}!")
+greet("Vaishu")
+greet("Priya","Good evening")
+
+keywor argument:-
+===============
+
+Local & Global Variable:-
+=======================
+Scope refers to where a variable is accesible in your code.A variable created inside a function is local it only exists inside that function.
+A variable created outside all the function is global it can be accessed from anywhere.
+
+Lists in Python:-
+A set of values which contains any values are called as Lists.
+
+Indexing:- Accessing list elements:- (V.imp)
+=================================
+every element in a python list occupies a specific position known as its index.
+its crucial to remember that python, like many  programming languages, uses zero-based indexing.
+This means that first element is at index 0, the second at 1, and so forth.
+there are mainly two types of indexes are there:-
+===============================================
+1) Positive index(left to right)
+2) Negative index(Right to left)
+
+#Slicing in Python:-
+================
+Slicing is a powerful feature in python that allows you to extract a specific portion or slice from a list.
+it doesn't modify the original list;instead, it returns a new list containing only the selected element.
+This is incredibly useful for working with subsets of data effeciently.
+
+Slicing Syntax:-
+===============
+The General index for slicing is 'list_name[start:stop:step]':
+1) start index  2) stop index     3) step value
+
+list methods in python:-
+======================
+1) Append :- means adding the values in the list at the end. ex:- lst.append(100)
+2) Insert:- means adding the string or any values in the list by its index value  ex:- lst.insert('Apple')
+3) Remove:- means removing the values from the list.  ex:- lst.remove(23)
+4) Pop():-  means it removes an element from a specific data collection(like a list or a dictorinary) and returns that removed value.
+5) Sorting:- It gives the data elements output in the ascendig order. nums(sort) means ascending order and nums.sort(reverse=True) means - It gives the data elements output in the descending order.
+6) Reversing:- It reverses the order of elements in the list directly, modifying the original list.   ex:- num.reverse()
+7) Searching:- It returns the index value of the specific item/element from the list.
+8) Counting:- It counts the how many times the any value or element is repeated in the list and it gives the output.
+
+Membership Operators:-
+=====================
+Membership Operators are used to test if a sequence(like a list) contains a specified element. They return a boolean value(True or false) based on the result of the check, making them highly useful for conditional logic.
+i) in - Check for Membership:- This operator returns if the specified value is found within the list, and false otherwise.
+ii) not in - Check for Non-Membership:- This operator returs True if the specified value is NOT found within the list, and False otherwise.
+ 
+#List Comprehension:-
+====================
+This helps to write the for loop & while loop codes in to single line, where normally when we use the loops in any code , we write the multiple code of lines so it helps to write in single line.
+ basic usage is:- Foor Loop v/s ONE LINE.
+ 2) Conditional Filtering:-
+ 3) Transforming elements:-
+
+
+Nested Lists:-   (Very Imp topic)
+============
+A nested list essentially contains a list that contains other lists as its elements.This powerful structure allows us to represent complex data such as grids,tables or matrices within python.
+Representing a Matrix:-
+=====================
+matrix=[
+       [1,2,3],
+       [4,5,6],
+       [7,8,9]
+]
+ this is a 3D list which is having 3 rows and columns.
+
+S7) Tuples:-
+===========
+Tuples is a collection of values stored in a single variable, very similar to the list.
+The key difference is that a tuple is immutable(cann't modify elements once its created or change,add or remove its elements).
+its similar to Lists. But in list we use [] square bracket where as here we use () paranthesis.
+
+Key properties of Tuple:-
+==========================
+1) List can be changed, but tuples Can't be changed once its created.
+2) Ordered- items stay in the order you put them in tuple.
+3) Immutable- Can't be modified/created/changed.
+4) Allows Duplicates- The same value can be appear more than once.
+5) Can hold any data type:- integers,string,boolean values etc
+
+Packing & Unpacking in Tuples:- ( very imp topic)
+=============================
+
