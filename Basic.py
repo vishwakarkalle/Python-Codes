@@ -1196,9 +1196,56 @@ print(f"First song: {songs[0]}")
 print(f"last song: {songs[4]}")
 print(f"Middle song: {songs[2]}")
 =================================
-"""
+
 #Q75: Create a tuple of 8 numbers. Using slicing, print the first 3, last 3, and every alternate element.
 numbers = (10, 20, 30, 40, 50, 60, 70, 80)
 print(f"First 3 numbers: {numbers[0:3]}")
 print(f"last 3 numbers: {numbers[-3:]}")
 print(f"Every alternate number: {numbers[::2]}")
+================================================
+
+#76:- Create a tuple of marks of 6 students. Print the highest, lowest, total, and average.
+marks=[50,64,88,96,100,42]
+highest=max(marks)
+lowest=min(marks)
+Total=sum(marks)
+average=Total/len(marks)
+print(f"The highest student marks is= {highest}")
+print(f"The lowest student marks is= {lowest}")
+print(f"The total student marks is= {Total}")
+print(f"The average student marks is= {average:.2f}")
+
+=================================
+
+#Q77: Take 5 numbers as input from the user, store them in a tuple, and print the tuple along with its minimum and maximum.
+nums=[]
+for i in range(0,5):
+    num=int(input(f"Enter a number{i+1}: "))
+    nums.append(num)
+numbers_tuple=tuple(nums)
+print("Tuple :",numbers_tuple)
+print("Tuple :",min(numbers_tuple))
+print("Tuple :",max(numbers_tuple))
+====================================
+
+#Q78:Write a function get_stats(nums) that takes a tuple of numbers and returns a tuple containing the sum, average, minimum, and maximum. Unpack the returned tuple and print each value.
+def get_stats(nums):
+    total=sum(nums)
+    average=total/len(nums)
+    minimum=min(nums)
+    maximum=max(nums)
+    return(total,average,minimum,maximum)
+nums=(20,40,30,60,80)
+total,average,minimum,maximum=get_stats(nums)
+print("The Sum :", total)
+print("The Average :", average)
+print("The Minimum :", minimum)
+print("The Maximum :", maximum)
+
+=================================
+"""
+
+
+
+
+
