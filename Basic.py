@@ -1189,4 +1189,16 @@ for i in range(0,rows):
             print("*", end=" ")
     print()
 =======================
+
+#Q74:- Create a tuple of 5 of your favourite songs. Print the first, last, and middle one using indexing.
+songs = ("song1", "song2", "song3", "song4", "song5")
+print(f"First song: {songs[0]}")
+print(f"last song: {songs[4]}")
+print(f"Middle song: {songs[2]}")
+=================================
 """
+#Q75: Create a tuple of 8 numbers. Using slicing, print the first 3, last 3, and every alternate element.
+numbers = (10, 20, 30, 40, 50, 60, 70, 80)
+print(f"First 3 numbers: {numbers[0:3]}")
+print(f"last 3 numbers: {numbers[-3:]}")
+print(f"Every alternate number: {numbers[::2]}")
