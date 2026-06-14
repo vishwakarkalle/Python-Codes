@@ -1243,8 +1243,12 @@ print("The Minimum :", minimum)
 print("The Maximum :", maximum)
 
 =================================
+#Dictonaries examples:-
 """
-
+student={"name":"vijay", "age":"27"}
+print(student, id(student))
+student["age"]=30
+print(student,id(student))
 
 
 
