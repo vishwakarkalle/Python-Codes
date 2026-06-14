@@ -1244,12 +1244,31 @@ print("The Maximum :", maximum)
 
 =================================
 #Dictonaries examples:-
-"""
+
+#example 1:-
+
 student={"name":"vijay", "age":"27"}
 print(student, id(student))
+#update
 student["age"]=30
 print(student,id(student))
+#add
+student["gender"]="male"
+print(student, id(student))
+============
+ 
+#EXA2:-
+"""
+student={
+    "name":"Rahul",
+    "age":"36",
+    "gender":"Male",
+    "city":"Hyderbad",
+} 
 
-
-
+k=input("Enter key= ")
+if k in student:
+    print(student[k])
+else:
+    print("key doesn't exists")
 
