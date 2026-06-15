@@ -1258,7 +1258,7 @@ print(student, id(student))
 ============
  
 #EXA2:-
-"""
+
 student={
     "name":"Rahul",
     "age":"36",
@@ -1271,4 +1271,14 @@ if k in student:
     print(student[k])
 else:
     print("key doesn't exists")
+===============================
+"""
 
+marks={
+    "science": 99,
+    "maths":100,
+    "cs":88,
+    "Hindi":43,
+    "History":77,
+}
+print(marks.items())
