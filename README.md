@@ -1,1 +1,1 @@
-# Python-Notes with Examples 2026
+# Python - Code Notes with Examples 2026
