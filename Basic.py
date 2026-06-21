@@ -1272,7 +1272,6 @@ if k in student:
 else:
     print("key doesn't exists")
 ===============================
-"""
 
 marks={
     "science": 99,
@@ -1282,3 +1281,99 @@ marks={
     "History":77,
 }
 print(marks.items())
+
+===============================
+#Practice question Dictionaries:-
+
+#Q79:- Student profile(HW):- Create a dictionary for a student,including keys like name,age,city and marks(as a list of scores).Print each of information using its key.
+student={
+    "name": "Vishwa",
+    "age": 25,
+    "city": "Bengaluru",
+    "marks": [89,92,74,91,53]
+}
+print("name:",student["name"])
+print("Age:",student["age"])
+print("city:",student["city"])
+print("marks:",student["marks"])
+=================================
+
+#Q80:-Safe Subject Access:- Define a dict with 5 subjects and their respective marks.Utilize the get() method to try accessing a subject that is not in the dictionary, ensuring it prints "Not available" as a defaults.
+subjects={
+    "Kannada": 120,
+    "English": 92,
+    "Hindi": 97,
+    "Maths":78,
+    "Science": 83,
+    "Social Science": 77
+}
+print(subjects.get("sanskrit", "Not Available"))
+================================================
+#Q81:- Product Price Lookup:- Construct a dict containing 4 product names & their prices.Prompt the user to enter a product name.Use the in keyword to check if it exists,if so, display its price.Otherwise, inform the user "Product not found".
+shop_list={
+    "Sugar": 48,
+    "Cooking Oil": 144,
+    "Gas": 1200,
+    "Gas stove": 3499,
+}
+product=input("Enter a Product name: ")
+if product in shop_list:
+    print(f"Price of {product}: Rs/- {shop_list[product]}")
+else:
+    print("Product not found")
+=========================================================
+
+#Q82:- World capitals:- Create a dict mapping five countries to their capital cities.Iterate theough this dictionary using the items() method and print each pair in the format. Country --> Capital.
+capitals={
+    "India" : "New Delhi",
+    "Srilanka" :  "Colombo",
+    "Russia" : "Moscow",
+    "America" : "washington DC",
+    "Japan" : "Tokyo"
+}
+for country,capital in capitals.items():
+    print(f"{country} --> {capital}")
+============================================
+
+#Q83:- Subject Performance Analysis:- Given a dictionary of marks for different subjects,loop over its values() to calculate and print the total marks and the average mark obtained.
+marks={
+    "Kannada": 120,
+    "English": 92,
+    "Hindi": 97,
+    "Maths":78,
+    "Science": 83,
+    "Social Science": 77
+}
+total_subjects=len(marks)
+print(total_subjects)
+total_marks=sum(marks.values())
+print(f"Avg={total_marks/total_subjects}")
+
+==============================
+
+#Q84:- Top Scores:- Populate a dict with six students names and their corresponding marks.Loop through it and print the names of all students who achived a scpre above 75.
+students={
+    "Alice": 82,
+    "Bablu": 87,
+    "Charlie": 91,
+    "Diana": 75,
+    "Einstein": 67,
+    "Franklin": 85,
+}
+for name,mark in students.items():
+    if mark >= 75:
+        print(f"Student= {name} & mark scored is={mark}")
+==================================
+"""
+#Q85:- Dictionary merge function:- 
+# Write a Python function named merge_dicts(d1, d2) that accepts two dictionaries(d1 and d2) as arguments and returns a new dictionary formed by merging them using the pdate() method. 
+# Ensure d1 remains unchanged.
+def merge_dicts(dict1,dict2):
+    new_dict={}
+    new_dict.update(dict1)
+    new_dict.update(dict2)
+    return new_dict
+d1={"a":1,"b":2,"c":3}
+d2={"d":4,"e":5,"f":6}
+ans=merge_dicts(d1,d2)
+print(ans)
