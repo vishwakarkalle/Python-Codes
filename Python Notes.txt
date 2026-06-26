@@ -212,3 +212,78 @@ Packing & Unpacking in Tuples:- ( very imp topic)
 Dictorinary in Python:-       #(very imp topic)
 =====================
 These are always in the key-value pairs and these are mutable and can be re-used again and again.
+
+Methods in Python:-
+=================
+1) key   2) Values  3) items  4) copy  5) add
+
+#Sets in Python:-
+=================
+A set is a collection of values is unique. it simply gets ignored. Sets are perfect when u care about what is present, but not about order or how many it appears.
+key properties of Python:-
+=======================
+1) Unordered   2) Unique values only  3) Mutable(you can add or remove items from a set after it has been created).
+4) No indexing:- Elements cannot be accessed by their position(index) becuase sets are unordered.
+5) Immutable Elements:- The elements within a set must be immutable(e.g: strings,numbers,tupples)lists or other sets cannot be elements of set.
+ {} - whatever u write inside it becomes set.
+ [] - whatever u write inside it becomes list.
+
+Python offeres methods like remove(),discard(),pop() and clear() to mange  set elements.
+
+#Set Operations:- Union and Intersection
+Sets are powerful tools for performing mathematical set operations. The two most common operations are union and Intersection, which allows u to combine (or) find the common elements between sets.
+1) Union ( | (or) .union()):-   (adding)
+==========================
+a={1,2,3,4}
+b={5,6,7,8}
+print(a | b)
+= {1,2,3,4,5,6,7,8}
+
+2)Intersection(& (or) .Intersection()):-
+======================================
+a={1,2,3,4}
+b={3,4,5,6}
+print(a & b)
+={3,4}          # it gives common numbers between two sets.
+
+
+Set vs List vs Tuple - Key Differences
+Feature	                           List	     Tuple	         Set
+Syntax	                        [1, 2, 3]	(1, 2, 3)	   {1, 2, 3}
+Ordered	                        ✅ Yes	   ✅ Yes	        ❌ No
+Mutable	                        ✅ Yes	   ❌ No	            ✅ Yes
+Allows Duplicates	            ✅ Yes	   ✅ Yes	        ❌ No
+Indexing	                    ✅ Yes	   ✅ Yes	        ❌ No
+Use Case	     Ordered, changing data 	Fixed, unchanging data	 Unique values, fast lookup
+Ex:-             1) Shopping cart,           1)Geographoc co-ordinates     1) Reamovig duplicates from a list.
+                 2) List of student names,   2)RGB colour values           2) Storing tags for a post.
+                 3) Transaction History.
+
+#Easy Memory Trick:-
+List ([]) → L = Lots of changes (mutable)
+Tuple (()) → T = Temporary fixed data (immutable)
+Set ({}) → S = Special unique values (no duplicates, unordered)
+
+When to Use a List:-
+===================
+Use Case	           Description
+Ordered Data	       When the insertion order matters.
+Duplicates Allowed	   When duplicate values are required.
+Frequently Modified	   When you need to add, remove, or modify items regularly.
+Examples	           Shopping cart, list of student names, transaction history
+
+When to Use a Tuple:-
+===================
+Use Case	                Description
+Immutable Data	            Data should not change after creation.
+Protect Data	            Prevent accidental modification.
+Dictionary Keys	            Can be used as dictionary keys because tuples are hashable.
+Examples	                Geographic coordinates (latitude, longitude), RGB color values, fixed database records
+
+When to Use a Set:-
+===================
+Use Case	                 Description
+Unique Collection	         Store only unique values (no duplicates).
+Order Doesn't Matter	     The order of elements is not important.
+Fast Membership              Testing	Quickly check if an item exists using the in keyword.
+Examples	                 Removing duplicates from a list, storing unique users, storing tags for a post, performing set operations (union, intersection, difference)

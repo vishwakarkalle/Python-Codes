@@ -1364,7 +1364,7 @@ for name,mark in students.items():
     if mark >= 75:
         print(f"Student= {name} & mark scored is={mark}")
 ==================================
-"""
+
 #Q85:- Dictionary merge function:- 
 # Write a Python function named merge_dicts(d1, d2) that accepts two dictionaries(d1 and d2) as arguments and returns a new dictionary formed by merging them using the pdate() method. 
 # Ensure d1 remains unchanged.
@@ -1377,3 +1377,126 @@ d1={"a":1,"b":2,"c":3}
 d2={"d":4,"e":5,"f":6}
 ans=merge_dicts(d1,d2)
 print(ans)
+===========================
+#Question for sorting a dictionary by its values & key.
+
+marks={"math":85, "science":92, "english":80, "hindi":95}
+#print(marks.items())
+ans=sorted(marks.items(),key=lambda x:x[1])
+print(ans)
+#or else we can write this as:-
+ans1=sorted(marks.items(),key=lambda x:x[1], reverse=True)
+print(ans1)
+
+===============================
+marks={
+    "Akshay": [45,78,89,79],
+    "Priya":[90,49,92,86],
+    "Rahul":[91,87,71,45],
+    "Sneha":[98,91,86,88],
+    "Kayadu":[78,67,37,75],
+}
+answer=dict(sorted(marks.items(),key=lambda x:sum(x[1]),reverse=True))
+#answer=dict(sorted(marks.items(),key=lambda x:x[1][3]))
+print(answer)
+=======================
+students={
+    "anirudh": {"maths":89,"science":92,"English":88},
+    "Priyanshu":{"maths":78,"science":45,"English":93},
+    "Sneha":{"maths":89,"science":82,"English":97},
+    "Kajal":{"maths":90,"science":71,"English":81}, 
+}
+ans=dict(sorted(students.items(),key= lambda x:x[1]["maths"], reverse=True))
+print(ans)
+
+=========================
+#Q86:- Create a dict of 6 subjects and their respctive marks.Print the subject with the highest marks and the one with the lowest, using max() and min() functions alongside a lambda expression.
+subjects={
+    "Kannada": 122,
+    "English":92,
+    "Sanskrit": 87,
+    "Science":75,
+    "Maths":88,
+    "Social Science":78,
+}
+
+highest_marks=max(subjects.items(),key=lambda x:x[1])
+lowest_marks=min(subjects.items(),key=lambda x:x[1])
+print("highest_marks:",highest_marks)
+print("lowest_marks:", lowest_marks)
+================================================================
+#Q87:- Create a nested dictionary containing details of 4 students, where each student entry includes their name, age and city.Write a loop to print the full details of each student in a clear,readable format.
+students={
+   "student1":{"Name":"Arya", "age":24, "city":"Tirupati"},
+   "student2":{"Name":"Avantika", "age":25, "city":"Bangalore"},
+   "student3":{"Name":"Bhavana", "age":27, "city":"Hyderbad"},
+   "student4":{"Name":"Sirisha", "age":29, "city":"Chennai"}
+}
+for student, details in students.items():
+    print(student)
+    print("Name:", details["Name"])
+    print("age:", details["age"])
+    print("city:", details["city"])
+    print()
+================================================================
+#Q88:- Design a dict where each key is a studenr's name and the corresponding value is a list of their marks in 3 different subjects.Calculate and print the total marks and average marks for each student.
+students={
+    "Akshay": [45,78,89],      #marks are list
+    "Priya":[90,49,92],
+    "Rahul":[91,87,71],
+    "Sneha":[98,91,86],
+    "Kayadu":[78,67,37],
+}
+for name, marks in students.items():
+    total=sum(marks)
+    avg=total/len(marks)
+    print(f"{name} has scored total of {marks} with avg of {avg:.2f} marks")
+=================================================
+#Q89. Top 3 Subjects by Marks:-
+#Given a dictionary of subjects and their marks, sort it by marks in descending order. Then, print only the top 3 subjects with the highest marks.
+
+subjects = {
+    "Mathematics": 88,
+    "Science": 95,
+    "English": 72,
+    "History": 80,
+    "Geography": 67,
+    "Computer": 91,
+}
+ans=sorted(subjects.items(),key=lambda x:x[1], reverse=True)        #reverse=True gives the output in descending order(highest)
+result=ans[0:3]
+for sub,mark in result:
+    print(f"sub ={sub},marks={mark}")
+========================================
+#Q90:- Numbers to cubes
+#Using a dict comprehension, create a new directory where keys are numbers from 1 to 10(inclusive), and values are the cube of each number.
+cubes={x: x**3 for x in range(1,11)}
+print(cubes)
+==================
+#Q91:- Filter Passing marks:-
+#Given an existing dict of subjects and their respective marks, use dictionary comprehension to generate a new dict that only the subjects where the student scored 40 or more(i.e.Passed)
+marks={
+    "Math": 85,
+    "Science": 35,
+    "English": 78,
+    "Hindi": 89,
+    "History": 25,
+    "Computer": 94
+}
+passed= {subject: mark for subject, mark in marks.items() if mark >= 40}
+print(passed)
+================================
+#92:- Combine List into dictionary:-
+#You have two separate lists:one containing subject names and another containing corresponding marks. Create a dictionary lists using dictionary comprehension,mapping each subject to its mark.
+list1=["Maths", "science","History", "Economy"]
+list2=[89,67,79,59]
+result={subject: mark for subject, mark in zip(list1, list2)}
+print(result)
+#result = {key: value for key, value in zip(list1, list2)}  - easy formula to remember
+========================
+pythonfruits={"apple","mango","banana","kiwi"}
+removed=pythonfruits.pop()
+print(f"removed element= {removed}")
+print(pythonfruits)
+===================
+"""
