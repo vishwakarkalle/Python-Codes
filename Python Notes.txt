@@ -287,3 +287,143 @@ Unique Collection	         Store only unique values (no duplicates).
 Order Doesn't Matter	     The order of elements is not important.
 Fast Membership              Testing	Quickly check if an item exists using the in keyword.
 Examples	                 Removing duplicates from a list, storing unique users, storing tags for a post, performing set operations (union, intersection, difference)
+
+#Strings in Python:-
+===================
+#string Methods in Python:-
+
+#Deep copy & shallow copy methods in Python:-
+===========================================
+1) Shallow copy methods:-
+In the shallow copy method it can copy/add the any elements to its oringal list but the values which are present inside the list are not changed or affected it remains the same, it only adds the inside the list values.
+original=[53,24,12,87[91,09,18],100,03]
+when we apply the shallow copy it applied only to values which are inside the list not inside the nested values.
+and to add the values into to nested list inside the list we need to use the "DEEP COPY".
+
+2) Deep Copy Method:-
+Here we use the deep copy in the nested Mutable list/objects to add any element then this deep copy method add the given values to the deep copy list not to the original list, here the original copy lists remains the same.
+
+When to use Shallow Copy and Deep copy:-
+======================================
+ Scenerio                                            Use
+ 1) Flat(simple) list/ dictionary(no nesting)      1) Use shallow copy(faster)
+ 2) Nested data u wil modify                       2) Deep copy(safe)/(slower)
+ 3) Only modifying the outer level                 3) Shallow copy
+ 4) modifying ANY nested level                     4) Deep copy
+ 5) Performance critical + no nesting              5) Shallow Copy
+
+ Will i touch anything nested ? "Yes" --> Deep copy
+                               "NO"  --> Shallow Copy
+
+Pass By Value (vs) Pass by Reference:-
+===================================
+Examples are written in the basic.py in line 1653.
+
+Rebinding (vs) Mutating:-
+========================
+Examples are written in the basic.py in line 1676.
+
+-------------------------------------------------------------
+| Rebinding                       | Modifying            |
+| ------------------------------- | ----------------------- |
+| `x = [10,20]`                   | `x.append(10)`          |
+| Creates a new object            | Changes existing object |
+| Original list remains unchanged | Original list changes   |
+| `nums` is unaffected            | `nums` is updated       |
+
+When is rebinding useful?
+-----------------------
+Rebinding is useful when you want to: 1)Create a new object without affecting the original.
+2) Replace a variable with a completely new value.
+3) Avoid unintended side effects on mutable objects like lists or dictionaries.
+
+Type Annotatins in Python:-
+=========================
+not much important
+
+OOP IN Python:-(object ORIENTED programming):- (VVV IMP)
+-------------------------------------------
+1) Foundations:-
+   i) Classes and objects      ii) _init,_self, atrributes   iii) Class & instance variables   iv) instance,class and static methods.
+
+2) The 4 Pillars of OOP:-
+   i)Encapsulation- hiding data,controlling access  ii) Inheritance- resusing code through parent child relationships.  3)Polymorphism:- One inheritance, many forms    4) Abstraction_ hiding complexity behind interfaces.
+
+3) Advanced topics:-
+ i) Multiple inheritance and MRO    ii) Dunder methods  iii) @property decorator   iv)Abstract classess with ABC.
+
+ what is Class ? what is Object ?
+ --------------------------------
+ A class is an blueprint of creating a things.  ex:- cars 
+ An Object is a specific instance created from that blueprint.
+
+class --> car  and objects means whatver it contains the car.
+1) Car is class - the blueprint
+2) Your specific red honda car is an object - an instance.
+3) Our neighbour blue honda is an other object - same class, diff instance.
+
+Rule of writing the class is:-
+=============================
+PascalCase:-   ex:- Student, BankAccount, OnlineClass - these are example.
+writing everything in small letters also wors but its not correct method.
+An object/Instance are same.
+
+__init__() Mrthod:-
+It is a special function that automatically runs whenever you create a new object from a class.
+Think of it as "setting up" or "initializing" the object.
+ex:-
+    class Student:
+    def __init__(self):
+        print("Student object created")
+
+s1 = Student()
+===============
+Student object created  - output
+----------------------------------
+What is self?
+This confuses almost everyone at first.
+self means "This current object."
+
+Example;-
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+With __init__() Method example:-
+-----------------------------
+class Student:
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+s1 = Student("Vishwa",25)
+s2 = Student("Rahul",24)
+s3 = Student("Ravi",23)
+
+Much easier to write multiple students data.
+So, __init__() doesn't create the object—it initializes it by assigning values, preparing data, or performing setup tasks after the object has been created. This is why it's called the initializer.
+------------------------------
+
+Instance(Class) Variable  (v/s) Class Variable:-
+----------------------------------------------
+Instance variable belongs to one specific object.
+Class Variable are shared across all objects.
+
+NOTE:- Instance variabls defined inside __init__ with self.atrribute
+whereas, Class variable - defined as directly inside the class body, outside any method.
+
+4) Encapsulation(Hiding data, controlling access):-
+Encapsulation is a practice of building data and methods together, and restricting direct access to internal data.
+1) Prevents accidental modification of important data.
+2) Enforce rules through methods such as validation and logging.
+3) Keeps internal implementation hidden so users interact through a clean interface.
+Real world analogy:- A bank ATM, The ATM doesn't  let reach into vault directly. You  enter through butons while bank handles. Authentication, balance checks and logging internally.
+
+Encapsulation is the pillar of OOP. 
+Encapsulation has mainly 3 Types:-
+1) Public atrribute(Default):-
+2) Protected atrribute(single underscore):-
+3) Private atrribute(double underscore)+ Name Mangling:-
+
+1:42:26 

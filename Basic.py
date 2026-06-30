@@ -1499,4 +1499,291 @@ removed=pythonfruits.pop()
 print(f"removed element= {removed}")
 print(pythonfruits)
 ===================
+text="anirudh"
+print(min(text),ord(min((text))))     #ord - gives the value from ASCCI Character
+print(max(text),ord(max((text)))) 
+print(sorted(text))
+===================================
+Q93. String Characters and Length
+=================================
+Take a name as input from the user. Print its first character, its last
+character, and the total length of the name.
+
+def print_details(name):
+    first=name[0]
+    last=name[-1]
+    n=len(name)
+    print(f"First={first},last={last} and length={n}")
+print_details("anirudh khurana is a coder")
+===========================================
+#Q94) Reverse a String:-
+#Accept a string as input. Print its reverse using string slicing.
+def reverse_a_string(text):
+    return text[::-1]
+ans=reverse_a_string("Ajay is warrior")
+print(ans)
+=========================================
+text="Vishwa is python developer AND AI engineer"
+print(text.upper())
+print(text.lower())
+print(text.title())
+print(text.capitalize())
+print(text.swapcase())
+#Above is an example for case conversion of string methods.
+==========================
+#Q97:- Email validation:-
+#Take an email as input, Validate that it contains exactly one @ and at least one.Print "Valid" or "Invalid".
+
+def check_email(email):
+    if email.count("@")==1 and "." in email:
+        return "valid"
+    return "Invalid"
+email="info@checkouthotels.com"
+print(check_email(email))
+==========================
+
+Q98. Clean Phone Number:-
+Take a phone number as input in the format +91-98765-43210. Remove all dashes
+and the country code. Print the cleaned 10-digit number.
+
+def clean_number(phone_number: str):
+    phone_number=phone_number.replace("-","")
+    phone_number=phone_number.replace("+91","")
+    print(phone_number)
+
+phone="+91-98754-68685"
+clean_number(phone)
+=================
+
+#Q99. Vowel-Starting Words:-
+Take a sentence as input. Split it into words and print how many words start
+with a vowel.
+
+def count_vowels_words(sentence:str):
+    vowels="aeiouAEIOU"
+    words=sentence.split()
+    #print(words)
+    for word in words:
+        if word[0] in vowels:
+            count =+ 1
+    return count
+sentence="Arya vardhan is great business man"
+print(count_vowels_words(sentence))
+================================================
+
+#Q100. Sorted Names:-
+Take a list of names as input (comma separated). Split them, sort them
+alphabetically, and join them back with " | " as separator.
+
+names_input="Charlie,Anitha,Edemberg,Bob,Diana"
+words= names_input.split(",")
+print(" | ".join(words))
+
+======================
+Q101. File Type Check:-
+=======================
+Take a filename as input (like report.pdf). Check if it ends with .pdf, .docx,
+or .txt and print the file type.
+
+filename="report.pdf"
+if filename.endswith(".pdf") or filename.endswith(".docx") or filename.endswith(".txt"):
+    print("valid file")
+else:
+    print("Invalid file")
+===========================
+#Q102. Longest Word:-
+#Take a sentence as input. Print the longest word in it.
+
+def print_longest_word(sentence:str):
+    words = sentence.split()
+   # print(max(words, key=lambda x: len(x)))  - we can directly print ans by using this method. otherwise we can use below method.
+    longest_count=0
+    longest_word=""
+    for word in words:
+        if len(word) > longest_count:
+            longest_count = len(word)
+            longest_word = word
+    print(longest_word)
+
+sentence= "Vishwa is a Software Engineer and as well as cinema passionate person"
+print_longest_word(sentence)
+====================================
+
+original=[1,2,3]
+copy=original
+copy.append(100)
+print(id(original))
+print(id(copy))
+print(original is copy)
+print(original != copy)
+print(copy)
+print(original)
+
+================
+#Shallow Copy Method example:-
+
+import copy
+original=[1,2,3]
+#copy=original.copy() 
+shallow= copy.copy(original)
+
+print(id(original))
+print(id(shallow))
+shallow.append(200)
+
+print(original)
+print(shallow)
+===============================
+#Deep Copy Method example:-
+
+import copy
+original=[19,72,93,[67,92,78],92,100,45]
+#copy=original.copy() 
+shallow= copy.deepcopy(original)
+
+print(id(original))
+print(id(shallow))
+shallow[3][1]=999
+shallow[6]=1000
+
+print(original)
+print(shallow)
+=================
+
+#Pass by value mathod:-
+def add_number(x):
+    x=x+1              #here 'x' is an inside function
+    print(f"Inside function={x}")
+num=10
+add_number(num)
+print(f"outside function={num}")
+====================================
+
+#Pass by Reference:-
+
+import copy
+def add_item(x):
+    x=copy.deepcopy(x)
+    x.append(100)
+    print(f"Inside function={x}")
+nums=[1,2,3,4]
+add_item(nums)
+print(f"Outside function={nums}")
+
+===================================
+
+#Rebinding in Python example:-
+===============================
+
+def rebind(x):
+    x=[100,200,300,400]
+    print(f"Inside function={x}")
+nums=[1,2,3,4]
+rebind(nums)
+print(f"Outside function={nums}")
+
+-----------------------------------
+#Mutating in Python example:-
+===============================
+
+def mutate(x):
+    x[0]=100
+    print(f"Inside function={x}")
+nums=[1,2,3]
+mutate(nums)
+print(f"Outside function={nums}")
+----------------------------------
+
+#OOP in Programming examples:- (VVIMP)
+------------------------------
+
+class student:
+    def display_details(self):            #methods
+        print(f"Roll no={self.roll_no}")
+        print(f"Name={self.name}")
+        print(f"Gender={self.gender}")
+        print(f"Age={self.age}")
+#object/Instance
+student1=student()
+student1.roll_no=1
+student1.name="Govardhanam"
+student1.gender="Male"
+student1.age=54
+student1.display_details()
+=============================
+#__init__() Method example:-
+
+class Car:
+    def __init__(self,company,price):
+        self.company=company
+        self.price=price
+car1=Car("Toyota", 1500000)
+print(car1.company)
+print(car1.price)
+--------------------------------------
+
+#Building a complete student Class example:-
+
+class student:
+    def __init__(self,name:str, age: int, marks:list[int]):
+        self.name: str= name
+        self.age: int= age
+        self.marks: list[int]=marks
+    def total(self):
+        return sum(self.marks)
+    def average(self):
+        return sum(self.marks)/len(self.marks)
+    def grade(self): 
+        avg= sum(self.marks)/len(self.marks)
+        if avg >= 90:
+            print("A+")
+        elif avg >= 50 and avg <= 90:
+            print("A")
+        else:
+            print("B")
+
+student1=student("Vaishnavi", 89,[76,91,67,80])
+total=student1.total()
+print(total)
+avg=student1.average()
+print(avg)
+student1.grade()
+--------------------------------------
+
+#Class Variables Example:-
+
+class student:
+    school = "SD JM Modern High School"
+    def __init__(self, name:str) -> None:
+        self.name = name
+
+s1=student("Aniyan")
+s2=student("Priya")
+print(s1.name)  #instance variables
+print(s2.name)  #instance variables
+
+print(s1.school)  #class variable
+print(s2.school)  #class variable
+print(student.school)  #class variable
+
+--------------------------------------
 """
+#Private variable Encapsulation example:-
+
+class Bank:
+    def __init__(self, name:str, balance:int):
+        self.name:str=name
+        self.__balance: int= balance
+    def deposit(self, amount:int):
+        if amount < 0:
+            print("Inavlid amount")
+        else:
+            self.__balance += amount
+    def get_balance(self):
+        return self.__balance
+    
+b1 = Bank("Avantika", 2000)
+print(b1.get_balance())
+b1.deposit(-1000)
+print(b1.get_balance())
+
