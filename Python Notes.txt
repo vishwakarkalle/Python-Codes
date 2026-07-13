@@ -426,4 +426,89 @@ Encapsulation has mainly 3 Types:-
 2) Protected atrribute(single underscore):-
 3) Private atrribute(double underscore)+ Name Mangling:-
 
-1:42:26 
+Inheritance:-
+-----------
+Inheritance lets a new class(the child) automatically re-use the atrributes and methods of an existing class(the parent).
+
+Real world analogy:-
+-----------------
+1) A car is a Vehicle:- every car shares an vehicle properties(wheels,engines,fuel)
+2) A Dog(is-A animal):- every dog inherits with animal traits.
+
+why use inheritance:-
+====================
+1) Code Re-use:- write once, inherit everywhere.
+2) Modeling real relationships:- capture "is-a" hirearchy naturally.
+3) Easier maintaince:- fix a bug in parent and all childrens get benifitted.
+
+TIP:- Use inheritance when there's true "is-a" relationship. If its just 'has-a', use composition instead.
+
+To inherit, put the parent class in paranthesis after the child class name.
+class Parent:
+    pass                    #This is basic syntax of the inheritance.
+class Child(Parent):
+    pass
+
+-------------------------------------------    
+Terminologies which are used in inheritance:-
+1) Parent class/Base Class/Super class
+2) Child class/Derived class/Subclass
+
+Types of inheritance:-
+-------------------
+Python supports the multiple inheritance patterns:-
+1) Single inheritance:- One parent, one child.
+2) Multilevel inheritance:- Grandparent --> parent --> child
+3) hirearchical inheritance:- One parent, Multiple childrens.
+4) Multiple inheritance:- One child, multiple parentheses
+
+we have seen single inheritance,but the above are multiple inheritance.
+
+
+Multiple inheritance with a shared ancestor creates ambiguity.credits
+The Diamond shape Problem  (vvimp):-
+The shape of the problem:
+    A
+   / \
+  B   C
+  \   /
+    D
+Here Both B & C inherit from A. D inherits from both B & C. When you call d.hello(),which method runs?
+Python solves this with the Method Resolution Method(MRO) - coming up next.
+-----------------------
+d = D()
+
+Now Python asks:
+
+"Where is hello()?"
+
+Since D doesn't have one, Python starts searching.
+
+Step 6: Search order (MRO):-
+=========================
+Python follows something called "Method Resolution Order"
+Check it yourself:
+print(D.mro())
+
+Output:-
+[
+<class '__main__.D'>,
+<class '__main__.B'>,
+<class '__main__.C'>,
+<class '__main__.A'>,
+<class 'object'>
+]
+
+or simply
+
+D
+↓
+B
+↓
+C
+↓
+A
+↓
+object
+
+This is the order Python searches.

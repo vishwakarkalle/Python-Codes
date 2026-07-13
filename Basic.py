@@ -1767,7 +1767,6 @@ print(s2.school)  #class variable
 print(student.school)  #class variable
 
 --------------------------------------
-"""
 #Private variable Encapsulation example:-
 
 class Bank:
@@ -1787,3 +1786,215 @@ print(b1.get_balance())
 b1.deposit(-1000)
 print(b1.get_balance())
 
+--------------------------------------
+#Inheritance Example:-
+
+class Vehicle:
+    def __init__(self,brand):
+        self.brand = brand
+    def start(self):
+        print(f"{self.brand} starting up...")
+class Car(Vehicle):
+    def drive(self):
+        print(f"{self.brand} is driving!")
+
+v = Car("Mahindra")
+v.drive()
+v.start()
+--------------------------------------
+
+class Animal:
+    def __init__(self, name:str, age:int) -> None:
+        self.name=name
+        self.age=age
+    
+    def speak(self):
+        print(f"{self.name} is speaking")
+
+    def sleep(self):
+        print(f"{self.name} is sleeping")
+class Dog(Animal):
+    def bark(self):
+        print(f"{self.name} is barking")
+
+d1= Dog('Ziku',8)
+d1.speak()
+d1.sleep()
+d1.bark()
+print(d1.age)
+print(d1.name)
+d2 = Dog('Bruno', 5)   # ✅created d2 
+print(d2.name)  
+print(d2.age) 
+--------------------------------------
+
+#Method overriding example:-
+class Animal:
+    def speak(self):
+        print("Animal is speaking")
+
+class Dog(Animal):
+    def speak(self):
+        print("Animal is barking")
+
+d= Dog()
+d.speak()
+--------------------------------------
+#Inheritance Python Example:-
+
+class Vehicle:
+    def __init__(self,brand:str):
+        print("This is vehicle constructor")
+        self.brand= brand
+
+class Car(Vehicle):
+    def __init__(self, fuel:str, brand:str):
+        print("This is car constructor")
+        super().__init__(brand)  #if we dont write the brand attribute will not set & it will not print only.
+        self.fuel=fuel
+
+    def display(self):
+        print(f"You have a {self.brand} car with {self.fuel} type")    
+car=Car("Petrol", "Maruti")
+car.display()
+
+--------------------------------------
+#Multilevel inheritance:-
+
+class Animal:
+    def breathe(self):
+        print("Breathing...")
+
+class Mammal(Animal):
+    def feed_young(self):
+        print("feeding young...")
+
+class Dog(Mammal):
+    def bark(self):
+        print("Wolf!")
+d=Dog()                
+d.breathe()        #From animal(grand parent)
+d.feed_young()     #From Mammal(parent)
+d.bark()           #from Dog itself
+
+--------------------------------------
+#Multiple inheritance:-
+
+class Flyer:
+    def fly(self):
+        print("Flying...")
+
+class Swimmer:
+    def swim(self):
+        print("Swimming...")
+    
+class Duck(Flyer,Swimmer):
+    def quack(self):
+        print("Quack!")
+d = Duck()
+d.fly()        #from flyer
+d.swim()       #from swimmer
+d.quack()      #from duck
+
+--------------------------
+#Hierarchical inheritance:-
+--------------------------
+
+class Animal:
+    def __init__(self, name):
+        self.name= name
+
+    def breathe(self):
+        print(f"{self.name} is breathing")
+
+class Dog(Animal):
+    def bark(self):
+        print("Woof!")
+
+class Cat(Animal):
+    def meow(self):
+        print("Meow!")
+
+class Cow(Animal):
+    def moo(self):
+        print("Moo!")
+
+d = Dog("Rex")
+c = Cat("Whiskers")
+cow = Cow("Bessie")
+
+#All inherit breathe() from Animal
+d.breathe()
+d.breathe()
+cow.breathe()
+c.breathe()
+--------------------------
+
+The Diamond Problem:-                             {#vvimp problem}
+Multiple Inheritance and Method Resolution Order (MRO) :-
+
+class A:
+    def hello(self):
+        print("Hello from A")
+class B(A):
+    def hello(self):
+        print("Hello from B")
+class C(A):
+    def hello(self):
+        print("Hello from C")
+class D(B,C):
+    pass
+d= D()
+d.hello()          #which version runs? B's or C's ?
+--------------------------
+
+#To check the method of resolving check the next tab basic.py line no:- 480
+--------------------------
+#The below is the syntax method of MRO:-
+
+class A:
+   def hello(self):
+       print("A")
+ 
+class B(A):
+   def hello(self):
+       print("B")
+   
+class C(A):
+    def hello(self):
+        print("C")
+
+class D(B,C):
+    pass
+d=D()
+d.hello()
+print(D.__mro__)
+
+--------------------------
+
+Overriding Polymorphism Method:-
+------------------------------
+"""
+class Shape:
+    def area(self):
+        return 0
+
+class Rectangle(Shape):
+    def __init__(self, w, h):        #here w-width & h- height
+      self.w, self.h = w, h
+
+    def area(self):
+        return self.w * self.h 
+
+class Circle(Shape):
+    def __init__(self,r):
+        self.r = r
+    
+    def area(self):
+        return 3.14 * self.r ** 2
+
+shapes = [Rectangle(3, 4), Circle(5), Rectangle(2, 6)]
+for s in shapes:
+    print(s.area())         #12, 78.5(5*5*3.14) 
+    
+        

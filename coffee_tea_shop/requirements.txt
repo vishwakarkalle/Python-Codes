@@ -1,6 +1,0 @@
-Django>=5.2
-Pillow>=12.0.0
-django-crispy-forms>=2.4
-crispy-bootstrap5>=2025.6
-stripe>=13.0.0
-python-dotenv>=1.1.0
