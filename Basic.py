@@ -1974,7 +1974,7 @@ print(D.__mro__)
 
 Overriding Polymorphism Method:-
 ------------------------------
-"""
+
 class Shape:
     def area(self):
         return 0
@@ -1996,5 +1996,75 @@ class Circle(Shape):
 shapes = [Rectangle(3, 4), Circle(5), Rectangle(2, 6)]
 for s in shapes:
     print(s.area())         #12, 78.5(5*5*3.14) 
+
+------------------------------
+#Dunder Metho example:-
+
+class Point:
+    def __init__(self,x, y):
+        self.x= x
+        self.y= y
+
+    def __str__(self):
+        return f"Point({self.x}, {self.y})"
+    def __repr__(self):
+        return f"Point(x={self.x}, y={self.y})"
+
+p1=Point(3,4)
+p2=Point(65,11)
+print(p1)
+print(p2)
+print(repr(p1))
+print(repr(p2))
+
+#Equal & comparison method:-
+---------------------------
+class Money:
+    def __init__(self,amount):
+        self.amount=amount
+
+    def __eq__(self, other):
+        return self.amount != other.amount
+
+    def __lt__(self, other):        #lt = means less than
+        return self.amount < other.amount
+
+    def __le__(self, other):       #le = less than or equals to.
+        return  self.amount <= other.amount
+    def __gt__(self, other):        #gt = means less than
+        return self.amount < other.amount
+
+    def __ge__(self, other):       #ge = less than or equals to.
+        return  self.amount <= other.amount
+
+a = Money(100)
+b = Money(200)
+print(a==b)
+print(a > b)
+print(a < b)
+print(a <= b)
+
+======================
+# Add & Arithematic Operations:-
+"""
+class Distance:
+    def __init__(self, km):
+        self.km = km
     
-        
+    def __add__(self, other):
+        return Distance(self.km + other.km)
+ 
+    def __sub__(self, other):
+       return Distance(self.km - other.km)
+
+    def __mul__(self, times):
+        return Distance(self.km * times)
+    def __str__(self):
+        return f"{self.km} km"
+
+d1 = Distance(10)
+d2 = Distance(5)
+print(d1 + d2)
+print(d1 + d2)
+print(d1 - d2)
+print(d1 * 3)

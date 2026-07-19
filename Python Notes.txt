@@ -476,15 +476,8 @@ The shape of the problem:
 Here Both B & C inherit from A. D inherits from both B & C. When you call d.hello(),which method runs?
 Python solves this with the Method Resolution Method(MRO) - coming up next.
 -----------------------
-d = D()
 
-Now Python asks:
-
-"Where is hello()?"
-
-Since D doesn't have one, Python starts searching.
-
-Step 6: Search order (MRO):-
+Step 6: Search order (MRO):-        #example for 1933 line problem
 =========================
 Python follows something called "Method Resolution Order"
 Check it yourself:
@@ -512,3 +505,57 @@ A
 object
 
 This is the order Python searches.
+=======================================
+Method Resolution Order(MRO):-
+----------------------
+The MRO is the order in which python searches classess when looking up a method.
+example is written in first tab in line no 1952 
+
+Python uses the C3 linearization algorithm.Roughly, go left to right, depth-first, but defer to the parents, only after all their children.
+
+To check the MRO:- print(D.mro())          Samme result as D.__mro__.
+when using the multiple inheritance,always check ClassName.mro() to know the search order.
+
+Polymorphism:-
+============
+Polymorphism means many forms. The same operation behaves differently for the different types.
+ex:- Pressing a "PLAY" button works on a video player, music player,game - same button, completely different behaviour depending on context.
+
+Three ways polymorphism appears in python:-
+1) Method of overiding
+2) Duck Typing
+3) Operator overloading
+
+another example is :-
+.speak()  --> Dog can speak, cat can speak and even cow.
+
+Dunder Method:-
+=============
+Dunder means double underscore.These are the special methods python calls automatically for built-in-operations.
+__init__ is the one ex we have already seen.
+implementating dunder method makes your custom objects behave like built-in-types.
+
+#Dunder Methods syntax:-
+----------------------
+class point:
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+p1=Point(3,4)
+p2=Point(65,11)
+print(p1)
+print(p2)
+============================
+Exception Handling in Python:-   (vvvvimp)
+=============================
+Exception:- An Exception is an unexpected event that happens during program execution & disrupts the normal flow of code.
+In simple terms:- Its a python way of saying "Hey somthing went wrong - I can't continuse normally"
+
+when an Exception happens, python:- 1) stops the program immediately.  2) prints a traceback(error message)  3) exists, unless you handle it.
+Normal Code flow --> Exception occurs --> program halts.
+
+The Mental Model: "try-except"
+Think of try-except as a safety net under ur code. 1)you put risky code inside try.   2)if smthing goes wrong, the except block catches it.  3)Ur program continues running instead of crashing.
+
+try --> [risk]---> except
+This is the fundamental pattern.Every other concept in this session build on this.
