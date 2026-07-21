@@ -1,1 +1,1 @@
-# Python Basic, advanced codes & Notes with Examples 2026
+# Python codes & Notes with Examples 2026
