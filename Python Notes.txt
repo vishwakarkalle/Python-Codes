@@ -559,3 +559,207 @@ Think of try-except as a safety net under ur code. 1)you put risky code inside t
 
 try --> [risk]---> except
 This is the fundamental pattern.Every other concept in this session build on this.
+
+The basic syntax:-
+  try:
+    age = int(input("Enter your age:"))
+    print(f"You'll be {age+1} nexy year")
+  except   ValueError:
+    print("Please enter a valid number .")
+
+how it works:-  1) python runs the try block  2) if everything is successds --> except is skipped.
+3) if a ValueError occurs --> except block runs    4)Program continues after the except block.
+
+              {try block}
+        Path 1         ||   ----> Path 2
+        [try succeeds]           [valueError raised]
+        [skip except]            [run except]
+        [continue]               [continue]
+
+Common Exceptions in Action (Error handling):-
+-------------------------------------------
+These three show up especially often when working with collections(lists,dicts) & method calls.
+1) IndexError:- #list index out of range
+fruits= [ "apple", "banana"]
+fruits[5]
+IndexError:List index out of range
+
+2) KeyError:- #dictionary key missing.
+data={"name": "Vishwanath"}
+data["age"]
+keyError: 'age'
+
+3) AttributeError:- #method or attribute doesn't exists.
+text="hello"
+text.append("!")     #string will not have append only list will have append.
+AttributeError: 'str' object has no attribute.
+
+Catching Multiple Exceptions in One block:-
+If you want to handle several exception types the same way, group them in a tuple.
+
+here u can combine ValueError & ZeroDivisionError into single block and written is as "except block" which will print as "Invalid input"
+example.py:-
+try:
+   num=int(input("Enter a number: "))
+   result= 100/ num
+except (ValueError, ZeroDivisionError):
+   print("Invalid input. try again.")
+
+Both ValueError and ZeroDivisionError are caught by this single except block.
+Use this when the response is the same for different errors.
+Use separate except blocks when each error needs its own handling.
+
+Try-except-else-finally together:-
+--------------------------------
+example.py:-
+==========
+          try:
+            num = int(input("Enter a number: "))
+            result = 100 / num
+         except ValueError:
+            print("That's not a valid number. ")
+         except ZeroDivisionError:
+            print("You can't divide by zero.')
+         else:
+            print(f"Result: {result}")
+         finally:
+              print("Calculation attempt complete.")
+
+Execution order:-
+===============
+1) Try runs first      2)If an exception happens,matching except runs and else is skipped.
+3) If no exception happens, else runs.          4) Finally always runs at the end.
+Tip:- You rarely need all four.Common combinations: try-except, try-finally, try-except-finally.
+
+[Normal Path]                   [Error Path]
+            |----> [Try Block] <------|
+                   |       |
+                   |       ------
+                   |            |
+                [else block]    [except blocks]
+                   |                 |
+                   |                 |
+                     [Finally block]
+                            |
+                            |
+                         [Done]
+
+
+Raising Exceptions: The raise statement:-
+----------------------------------                         
+Sometime u want to raise an exception yourself - to signal that something is wrong.
+
+def set_age(age):
+    if age < 0:
+            raise ValueError("Age cannot be negative")
+    if age > 150:
+            raise ValueError("Age seems unrealistic")
+    return age
+set_age(-5)
+#ValueError: Age cann't be negative.
+
+when to raise:- 1) Validating user input  2) Signaling invalid state in ur functions.
+3) Stopping execution before bigger problems occur.
+4) Forcing the caller to handle a spcific condition.
+
+Tip:- Raise lets ur code speak up when something is wrong, instead of silently returning bad data.
+
+Creating Custom Exception Class:-
+==============================
+Custom exceptions are just regular python classess that inherit from exception.
+exception.py:-
+  class InsufficientFundsError(Exception):
+       pass
+
+This is the simplest form. Now u can use it like any built-in-exception.
+app.py:-
+    def withdraw(balance, amount):
+        if amount > balance:
+            raise InsufficientFundsError("Not enough  money")
+        return balance - amount
+try:
+    withdraw(100, 500)
+except InsufficientFundsError as e:
+     print(f"Transaction failed: {e}")
+
+
+#Naming convention:
+1) Use PascalCase         2) Always end with error or exception.
+
+
+            Exception(Built-in-case):-
+                    |
+                    |  (inherit from)
+                InsufficientFundsError(your custom exception class)
+                    |
+                    |---> [RAISE]
+----------------------------------
+
+File Handling in Python:-
+=======================
+Read  . Write . Manage
+
+So far, all the data in ur Python programs disappers the moment ur program ends. Variables, lists, dictionaries - gone.
+But in real world, u need to :-
+1) Save user data so it survives between program runs.
+2) Read configuration files, datasets, logs.
+3) Generate reports, export results, write logs.
+
+File handling is how python talks to files on ur computer - reading data from them and writing data into them.
+Once dara is in file, it stays there. Forever(untill u delete it).
+
+name = "Anirudh"                                              data.txt
+score = 95         ----> [File handling bridges this gap] -->  name = "Anirudh"
+                                                               score = 95
+[In-Memory data - gone when program ends].                                                             [On-disk data - persists forever]           
+
+Mental Model: A File is like a Notebook.
+========================================
+Before we touch the code, hold this picture in ur head:
+1) Open:- the notebook - u can read/ write anything in it.
+2) Read/Write:- Read already what's written, or write something new.
+3) Close:- close the notebook when ur done.
+
+basically only 3 steps are there in this:-
+1)Open()    2) Read/write()     3) Close() the book.
+
+That's exactly what file handling does.Every file operation follows this same 3-steps in rhythm:-
+if you forget to close it. things can break. We'll see how the python solves that for u in a moment.
+
+The Open() Function:-
+===================
+everything starts with open(). It takes two main arguments:-
+[ file_object = open(filename, mode)  ]
+# filename --> The name(path) of the file u want to work with.
+# mode --> what u want to do(read,write,append,etc).
+
+Open() returns a file object- think of it as handle that lets u talk to the file.
+
+Files Modes Overview:-
+====================
+The Mode tells Python what u intend to do with the file. The common modes:-
+==================================================
+Mode           Meaning              what it does
+==================================================
+"r"             Read               Open for reading(Default).File must exist.
+"w"             Write              Create a new or overwrite the existing file.
+'a'             Append             Add content to end of file. Creates if missing.
+'x'             Exclusive          Create a new file,Error if it already exists.
+'b'             Binary             Use with images,PDF's,videos(e.g:-'rt')
+'t'             Text               Default.Treats data as text.
+'+'             Read + write       Combined mode(eg:- 'r+','w+')
+
+we can also combine 'rb' - read binary, 'w+' = write and read.
+
+Binary vs Text Mode:-
+===================
+File come into two flavors:-
+Text mode 't'(Default)- for human-readable files: .txt,.csv,.py,.json
+Binary Mode 'b' - for non-text files: images,PDF's,videos,excutables.
+
+key difference:-
+=============
+Text mode --> reads/writes --> strings
+Binary mode --> reads/write --> bytes
+
+Tip:- if your are working with anything other than plain text - images,audio,PDF's - u need binary mode.

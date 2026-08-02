@@ -2046,7 +2046,7 @@ print(a <= b)
 
 ======================
 # Add & Arithematic Operations:-
-"""
+
 class Distance:
     def __init__(self, km):
         self.km = km
@@ -2068,3 +2068,118 @@ print(d1 + d2)
 print(d1 + d2)
 print(d1 - d2)
 print(d1 * 3)
+===============
+
+Exception handling examples:-
+----------------------------
+
+try:
+    age=int(input("Enter age ="))
+    if age >= 18:
+        print("Adult")
+    else:
+        print("Not adult")
+except:
+    print("Some error occured")
+
+print("Done")
+print("Good")
+
+-----------------
+try:
+    num1= int(input("Enter number 1 = "))
+    num2= int(input("Enter number 2 = "))
+    print(f"num1/num2= {num1/num2}")
+except ZeroDivisionError:
+    print("Cannot divide by zero, please enter proper integers")
+except ValueError:
+    print("Please ente proper integers")
+except:
+    print("Some error occured")
+
+-----------------
+
+#Capturing exception object.py
+#ZeroDivisionError  & #ValueError
+
+try:
+    num1 = int(input("Enter number 1 = "))
+    num2 = int(input("Enter number 2 = "))
+    print(f"num1/num2 = {num1/num2}")
+except Exception as e:
+    print(type(e).__name__)
+    print(f"Error message = {e}")
+-----------------
+
+try:
+    num = int(input("Enter a number: "))
+    result = 100 / num
+except ValueError:
+    print("That's not a valid number.")
+except ZeroDivisionError:
+    print("You can't divide by zero.")
+else:
+    print(f"Result: {result}")
+finally:
+    print("Calculation attempt complete")
+
+----------------------
+#raising exception.py
+
+def check_age(age:int):
+    if age<0:
+        raise ValueError("Age cann't be negative")
+    elif age >= 150:
+        raise ValueError("Age is not real")
+    print("Your age is good & normal")
+
+try:
+    check_age(60)
+except ValueError as e:
+    print(e)
+except Exception as e:
+    print(e)
+----------------------
+#re-raising exception.py
+
+def check_age():
+    try:
+        age = int(input("Enter your age = "))
+        if age < 0:
+            print("Age cann't be negative")
+        elif age >= 150:
+            print("Age is not real")
+    except ValueError as e:
+        print(f"Inside function Error = {e}")
+        raise
+    except Exception as e:
+        print(f"Inside function Error = {e}")
+
+try:
+    check_age()
+except Exception as e:
+    print(f"Outside error = {e}")
+    raise
+else:
+    print("Success")
+
+----------------------
+#Custom exception.py
+"""
+
+class InsufficientFundsError(Exception):
+    pass
+def withdraw_money(balance, withdraw_amount):
+    if withdraw_amount > balance:
+        raise InsufficientFundsError("not enough balance")
+    print(f"Remaining balance= {balance-withdraw_amount}")
+
+try:
+    withdraw_money(1000, 5000)
+except InsufficientFundsError as e:
+    print(f"Error name = {type(e).__name__}")
+    print(f"error = {e}")
+except Exception as e:
+    print(f"Error name = {type(e).__name__}")
+    print(f"error = {e}")
+    
