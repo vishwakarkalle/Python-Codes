@@ -2165,7 +2165,6 @@ else:
 
 ----------------------
 #Custom exception.py
-"""
 
 class InsufficientFundsError(Exception):
     pass
@@ -2182,4 +2181,63 @@ except InsufficientFundsError as e:
 except Exception as e:
     print(f"Error name = {type(e).__name__}")
     print(f"error = {e}")
+
+----------------------
+
+import math
+print(math.sqrt(16))        # it gives root values
+print(math.floor(5.8))            # it gives lower value which is below one.
+print(math.floor(6.1))            
+print(math.floor(6.1))
+print(math.ceil(1.6))            # it gives above one value
+print(math.ceil(26.0))
+
+----------------------
+#Multi-threading example:-
+
+import time
+def task():
+    print("This task t1 is Running")
+    time.sleep(3)
+    print("Task is finished")
+# t = threading.Thread(target=task)
+print("Main program START")
+task()
+print("Main Program END")
+
+----------------------
+
+#Multi-threading example:-
+import time
+import threading
+def task(name):
+    print(f"{name}This task t1 is Finished\n")    
+
+print("Main Program START\n")
+t1 = threading.Thread(target=task, args=("cooking",))
+t2 = threading.Thread(target=task, args=("baking",))
+t1.start()
+t2.start()
+t1.join()
+t2.join()
+print("Main Program END\n")
+----------------------
+
+#Building a Custom Context Manager:-
+=================================
+A Timer:-
+"""
+import time
+class Timer:
+    def __enter__(self):
+        self.start = time.time()
+        return self
+    def __exit__(self, exc_type, exc, tb):
+        self.elapsed = time.time() - self.start
+        print(f"Elapsed: {self.elapsed:.4f} seconds")
+        return False             #don't supress exceptions.
+
+with Timer():
+    total = sum(range(1_000_000))
+    print(f"Sum:{total}")
     

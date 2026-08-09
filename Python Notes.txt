@@ -763,3 +763,186 @@ Text mode --> reads/writes --> strings
 Binary mode --> reads/write --> bytes
 
 Tip:- if your are working with anything other than plain text - images,audio,PDF's - u need binary mode.
+
+Modules and Packages:-
+===================
+A Module is a simply python file(.py) containing code- functions,variables,classess - that u can re-use elsewhere.
+
+#greetings.py                 This is a module file.
+def say_hello(name):
+      return f"Hello,{name}!"
+PI= 3.14159
+
+The Module name is just the filename without .py so greeting.py becomes the module greetings.
+Key Idea:- Every Python file u write is already a module.You just have to "import" it to use it elsewhere.
+
+Quick Tip:- U have been using modules all along - math,random and datetime are all modules that ship with python.
+
+One file = One module.
+
+Why Use Modules:-
+===============
+As programs grow, putting everything in one file becomes a nightmare.
+Modules solve this by letting you:
+1) Organize code into logical, separate files.
+2) Avoid code across multiple porgams.
+3) Avoid duplication - write once, import everywhere.
+4) Collabrative - different people work on different modules.
+5) Maintain Easily - fix a bug in one place.
+
+Quick Tips:- Think of modules as "toolboxes" -each one holds related tools u can grab wheneer u need them.
+
+without modules:-                           with modules:-
+Hard to navigate                            Easy to navigate
+hard to re-use                              Easy to reuse
+Hard to maintain                            Easy to maintain 
+hard to Collabrate                          Easy to Collabrate
+
+The "Import" Statement:-
+====================
+import math
+print(math.sqrt(16))
+
+
+Using Built-in-modules: math & random
+    Math                             random
+import math                      import random
+math.sqrt(25)    #5              random.random()
+math.ceil(4.2)   #5              random.random()       #0.0 to 1.0
+math.floor(4.8)  #4              random.randint(1,6)        #random int
+math.pi    #3.141                random.choice(["a","b"])
+math.pow(2,3)   #8.0             random.shuffle(my_list)
+
+Tip:- Before installing a third-party package, check if pythin has standard library already has what u need - it usually does.
+
+More Built-in Modules: datetime,os,sys 
+====================
+Ths standard library has more than 200+ modules for files, web, math, dates,JSON and far.
+
+datetime:-
+import datetime
+today= datetime.date.today()
+now=datetime.datetime.now()
+
+os:-
+import os
+os.getcwd()
+os.list(".")
+os.path.exists("f.txt")
+
+sys:-
+import sys
+sys.argv
+sys.path
+sys.exit()
+
+Creating your own module:-
+1) Making a module is easy - just write a .py file.
+2) Calculator.py is now module named as Calculator.
+3) It can contain the functions, variables/constants,classess and anything u would write in normal python.
+
+Tip:- Keep Related functionality together in one module. A calculator.py for math helpers, a database.y for DB functions, and so on.
+
+How Python Finds Modukes:-
+=========================
+When u write a import calculator, where does Python actually work?
+Python searches these location in order:
+1) The current directory(where our script runs)
+2) Directories in the PYTHONPATH env variable.
+3) The standard library directories.
+4) The site-packages folder(where pip installs third-party packages)
+You can see the full search path:
+
+import sys
+print(sys.path)       #list of directories python searches.
+
+WatchOut:- If Python can't find ur module, we will get a "ModuleNotFoundError". Usually it means the file isn't in any othese searches locations.
+
+
+import calculator
+     |
+current directory(where your script runs)
+     |
+PYTHONPATH    (env variable)
+     |
+Standard library (directories)
+     |
+Site-packages (folder(pip installs third-party packages))
+     |
+First match wins.
+
+
+Creating a Package:-
+===================
+Building a package is straightforward- make a folder & add an __init__.py
+Step 1): Create the structure.
+   Shapes/
+       __init__.py
+
+Step 2): Add code to the modules:
+#shapes/circle.py
+import match
+def area(radius):
+    return math.pi * radius ** 2
+
+#shapes/rectangle.py
+def area(width, height):
+      return width * height
+
+Now from the above code shapes is a package containing two modules.
+
+In Modern Python(3.3+),__init__.py is technically optional - but including it is standard, clearest practice, always add it.
+
+STEP 1) Create the structure:-
+    shapes/
+         __init__.py
+
+STEP 2) Add the modules
+   shapes/
+       __init__.py
+       circle.py
+       rectangle.py
+
+
+Importing From a Package:-
+===============
+
+#Multi-threading & Multi-processing:-
+=================================
+Doing many things at Once in python
+Concurrency . Parallelism. The GIL.
+
+Concurrency (vs) Parallelism:-
+============================
+Two words that sound similar but mean different things:-
+
+Concurrency:- Managing multiple tasks at once by switching b/w them Quickly.They may not run at at the exact same instant - they take turns.
+ex:- One chef juggling b/w 3 dishes,switching b/w them.
+
+Parallelism:- actually running multiple tasks at the same instant, on multiple CPU Cores.
+ex:- Three chefs, each of them cooing one dish simultaneously.
+
+Quick Tip:- Concurrency is about structure. whereas Parallelism is about execution.
+
+
+Process (vs) Thread:-
+==================
+The Two fundamental unit of execution.
+
+1.Process:- An independent program with its own memory space.
+Heavyweight - more overhead to create.
+Processess dont share memory by Default.
+Ex:- Opening two separate instances of an app.
+Google app --> open chrome ---> hence its a process running.
+
+2.Thread:- A lightweighted unit that lives inside a process.
+Multiple threads shares the same memory of their process.
+Cheaper and faster to create.
+Ex:- A single app handling UI + downloads at once.
+
+One process can contain many threads. Threads share memory- convenient but risky. Processess are isolated.
+
+Process "A"                              Process "B"
+shared Memory(code,Data,Heap etc)        Isolated Memory
+  |    |       |                              ||
+(Thread 1)   (Thread 2)  (Thread 3)         (Thread 1)
