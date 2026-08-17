@@ -1,1 +1,1 @@
-# Python Basic and advanced  notes with Examples-2026 
+# Python Basic Notes with Examples-2026 
