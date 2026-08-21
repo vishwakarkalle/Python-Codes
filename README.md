@@ -1,1 +1,1 @@
-# Python Notes - 2026 
+# Python Basic and Adanced topics Notes - 2026 
