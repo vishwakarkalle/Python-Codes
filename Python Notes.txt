@@ -964,3 +964,31 @@ append → add something to the right
 appendleft → add something to the left
 pop → remove something from the right
 popleft → remove something from the left
+
+Numpy:-(Numerical Python)
+===== 
+Numpy is built on 'C' language which is low leveling language.
+Whatever the response provided by the Numpy is much faster compared to the Python.
+Numpy is considered as memory effecient.
+Its a library for number operations.
+Works with arrays(Collection of numbers).
+Makes Python faster for math.
+
+In Numpy we can do the multipe operations:-
+1)Matrix Operations     2) Image processing  3)Machine learning.
+
+Creation of arrays & diff properties of array:-
+=============================================
+In Numpy Array's  & key Properties include the ndim,nsize,nshape,nbytes etc.
+
+what is indexing and Slicing
+indexing:- Indexing means getting a single value from the array using its position.
+
+In python index values starts from '0'.
+First element is at  index 0, second at 1 and so on.
+U we can use also negative indexing to get values from the end.
+
+These are Elements -> 1 2 3 4 5
+These are Index    -> 0 1 2 3 4
+These are negative index -> -5 -4 -3 -2 -1
+ 

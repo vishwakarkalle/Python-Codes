@@ -2226,7 +2226,7 @@ print("Main Program END\n")
 #Building a Custom Context Manager:-
 =================================
 A Timer:-
-"""
+
 import time
 class Timer:
     def __enter__(self):
@@ -2240,4 +2240,13 @@ class Timer:
 with Timer():
     total = sum(range(1_000_000))
     print(f"Sum:{total}")
-    
+
+================================
+"""
+
+import sys
+import numpy as np
+a=[1,2,3,4,5]
+arr=np.array(a)
+print("List size:", sys.getsizeof(a))
+print("Array size:", arr.nbytes)
